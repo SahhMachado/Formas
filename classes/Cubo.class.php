@@ -67,7 +67,7 @@
             if ($cnst > 0)
                 switch($cnst){
                     case(1): $sql .= " && idC like :procurar"; $procurar .= "%";break;
-                    case(2): $sql .= " && cor like :procurar"; $procurar .="%"; break;
+                    case(2): $sql .= " && cubo.cor like :procurar"; $procurar .="%"; break;
                     case(3): $sql .= " && idquad = :procurar"; break;
                 }
 
