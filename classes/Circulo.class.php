@@ -74,7 +74,13 @@
 
         public function desenha(){
             $str = "<div class='ts' style='border-radius: 50%; display: inline-block; width: ".$this->Diametro()."vw; 
-            height: ".$this->Diametro()."vw; background: ".$this->getcor().";border: 5px solid".$this->getcor().";'></div><br>";
+            height: ".$this->Diametro()."vw; background: ".$this->getCor().";border: 5px solid".$this->getCor().";'></div><br>";
+            return $str;
+        }
+
+        public function esfera(){
+            $str = "<div class='esf' style='border-radius: 50%; display: inline-block; width: ".$this->Diametro()."vw; 
+            height: ".$this->Diametro()."vw;  background-image: linear-gradient( to left, ".$this->getCor().", #000000); ;border: 5px solid".$this->getCor().";'></div><br>";
             return $str;
         }
 

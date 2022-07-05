@@ -28,17 +28,21 @@
             border: none;
         }
 
-        @keyframes bounce {
+        @keyframes rotation {
             from {
-                transform: translateY(0px);
+                    transform: rotate(0);
             }
             to {
-                transform: translateY(-15px);
-            }
+                transform: rotate(359deg);
+	        }
         }
-
+        
         .ts{
             animation: bounce 0.5s infinite alternate;
+        }
+
+        .esf{
+            animation: rotation 10s infinite;   
         }
 
         .div{
@@ -69,6 +73,8 @@
             if ($acao = "salvar") {
                 $quad = new Circulo($id, $raio, $cor, $circ_idtab);
                 echo $quad->desenha();
+                echo "<br>";
+                echo $quad->esfera();
                 echo $quad;
             }
             ?>
