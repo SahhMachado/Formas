@@ -63,12 +63,12 @@
         }
 
         public static function listar($cnst = 0, $procurar = ""){
-            $sql = "SELECT * FROM cubo";
+            $sql = "SELECT * FROM quadrado,cubo WHERE idquad = id";
             if ($cnst > 0)
                 switch($cnst){
-                    case(1): $sql .= " WHERE idC like :procurar"; $procurar .= "%";break;
-                    case(2): $sql .= " WHERE cor like :procurar"; $procurar .="%"; break;
-                    case(3): $sql .= " WHERE idquad = :procurar"; break;
+                    case(1): $sql .= " && idC like :procurar"; $procurar .= "%";break;
+                    case(2): $sql .= " && cor like :procurar"; $procurar .="%"; break;
+                    case(3): $sql .= " && idquad = :procurar"; break;
                 }
 
             $par = array();
@@ -82,19 +82,19 @@
         }
 
         public function desenha(){
-            $c = "<div style='width: ".$this->getLado()."px; height: ".$this->getLado()."px; animation: rotate 10s infinite alternate; transform-style: preserve-3d;'>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: translateZ(".$this->divide()."px);'></div>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: rotateY(90deg) translateZ(".$this->divide()."px);'></div>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: rotateY(180deg) translateZ(".$this->divide()."px);'></div>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: rotateY(-90deg) translateZ(".$this->divide()."px);'></div>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: rotateX(90deg) translateZ(".$this->divide()."px);'></div>
-                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."px; height: ".$this->getLado()."px; 
-                            position: absolute; transform: rotateX(-90deg) translateZ(".$this->divide()."px);'></div>
+            $c = "<div style='width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; animation: rotate 10s infinite alternate; transform-style: preserve-3d;'>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: translateZ(".$this->divide()."vh);'></div>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: rotateY(90deg) translateZ(".$this->divide()."vh);'></div>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: rotateY(180deg) translateZ(".$this->divide()."vh);'></div>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: rotateY(-90deg) translateZ(".$this->divide()."vh);'></div>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: rotateX(90deg) translateZ(".$this->divide()."vh);'></div>
+                        <div style='background: linear-gradient(45deg, ".$this->getcor().", ".$this->getcor()."); border: 2px solid white; display: flex; width: ".$this->getLado()."vh; height: ".$this->getLado()."vh; 
+                            position: absolute; transform: rotateX(-90deg) translateZ(".$this->divide()."vh);'></div>
                     </div><br><br><br>";
             return $c;
         }

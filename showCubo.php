@@ -6,10 +6,6 @@
     require_once "conf/Conexao.php";
     $procurar = isset($_POST["procurar"]) ? $_POST["procurar"] : ""; 
     $cnst = isset($_POST['cnst']) ? $_POST['cnst'] : 1;
-
-    $pdo = Database::iniciaConexao();
-    $consulta = $pdo->query("SELECT lado FROM quadrado,cubo WHERE cubo.idquad = quadrado.id;");
-    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { $lado = $linha['lado']; };    
 ?>
 
 <html lang="pt-br">
@@ -120,6 +116,7 @@
             <tr>
                 <td><b>ID</b></td>
                 <td><b>Cor</b></td>
+                <td><b>Lado</b></td>
                 <td><b>ID Quadrado</b></td>
                 <td><b>Listar</b></td>
                 <td><b>Editar</b></td>
@@ -137,9 +134,10 @@
             <td style="color: <?php echo $linha['cor'];?>; float: left;"><?php echo $linha['cor'];?>
             <div style="width: 10px; height: 10px; background-color:<?php echo $linha['cor'];?>; 
             border-radius: 50%; float: left; display: table-cell; margin-top: 6px; margin-right: 14px;"></div></td>
+            <td><?php echo $linha['lado'];?></td>   
             <td><?php echo $linha['idquad'];?></td>   
             
-            <td><a href='listarCubo.php?idC=<?php echo $linha['idC'];?>&lado=<?php echo $lado;?>&cor=<?php echo $cor;?>&idquad=<?php echo $linha['idquad'];?>'><img src='img/listar.svg'></a></td>
+            <td><a href='listarCubo.php?idC=<?php echo $linha['idC'];?>&lado=<?php echo $linha['lado'];?>&cor=<?php echo $cor;?>&idquad=<?php echo $linha['idquad'];?>'><img src='img/listar.svg'></a></td>
             <td><a href='cadCubo.php?acao=editar&idC=<?php echo $linha['idC'];?>'><img src='img/edit.svg'></a></td>
             <td><?php echo " <a href=javascript:excluirRegistro('acaoCubo.php?acao=excluir&idC={$linha['idC']}')>
             <img src='img/excluir.svg'></a><br>"; ?></td>
